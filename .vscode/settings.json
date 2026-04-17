@@ -1,0 +1,6 @@
+{
+  "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.experimental.classRegex": [
+    ["pilar-card\\s+\\S+\\s+bg-linear-to-t\\s+([^\\s\"]+)", "([\\w-]+)"]
+  ]
+}

@@ -1,0 +1,843 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pillars = [
+  {
+    id: 'kja',
+    icon: '🐟',
+    label: 'Pilar 01',
+    title: 'Perikanan KJA',
+    subtitle: 'Keramba Jaring Apung',
+    description:
+      'Instalasi KJA berukuran 50m × 10m dengan kapasitas produksi 10.000 ekor Ikan Nila unggul. Sistem sirkulasi air alami danau menjamin kualitas oksigen optimal tanpa pompa tambahan.',
+    specs: [
+      { label: 'Luas KJA', value: '50m × 10m' },
+      { label: 'Kapasitas', value: '10.000 ekor' },
+      { label: 'Komoditas', value: 'Ikan Nila' },
+      { label: 'Siklus Panen', value: '5–6 bulan' },
+    ],
+    image: '/images/fish-kja.png',
+    color: 'from-ocean to-ocean-light',
+    accent: 'ocean',
+  },
+  {
+    id: 'aquaponik',
+    icon: '🥬',
+    label: 'Pilar 02',
+    title: 'Aquaponik Selada',
+    subtitle: 'Sistem Rakit Apung',
+    description:
+      '1.000 lubang tanam selada organik dengan sistem rakit apung (Deep Water Culture) terintegrasi sebagai bio-filter alami. Limbah nutrisi ikan diserap langsung oleh akar tanaman.',
+    specs: [
+      { label: 'Lubang Tanam', value: '1.000 unit' },
+      { label: 'Komoditas', value: 'Selada Organik' },
+      { label: 'Sistem', value: 'Rakit Apung (DWC)' },
+      { label: 'Panen', value: '30–35 hari' },
+    ],
+    image: '/images/aquaponics-price.png',
+    color: 'from-emerald to-emerald-light',
+    accent: 'emerald',
+  },
+  {
+    id: 'bebek',
+    icon: '🥚',
+    label: 'Pilar 03',
+    title: 'Bebek Petelur',
+    subtitle: 'Produksi Telur Harian',
+    description:
+      '100 ekor bebek petelur produktif terintegrasi dengan ekosistem KJA. Kotoran bebek berfungsi ganda sebagai pakan alami ikan, menciptakan siklus nutrisi zero-waste yang efisien.',
+    specs: [
+      { label: 'Populasi', value: '100 ekor' },
+      { label: 'Produksi', value: '70–80 telur/hari' },
+      { label: 'Integrasi', value: 'Bio-siklus KJA' },
+      { label: 'Nilai Jual', value: 'Rp 2.000/butir' },
+    ],
+    image: '/images/duck-farm.png',
+    color: 'from-sunset to-sunset-light',
+    accent: 'sunset',
+  },
+];
+
+const biayaItems = [
+  {
+    no: 1,
+    item: 'Rumah Apung (Pusat Kontrol)',
+    detail: 'Konstruksi, material, & perlengkapan',
+    biaya: 'Rp 13.000.000',
+    persen: 18.6,
+  },
+  {
+    no: 2,
+    item: 'Keramba Jaring Apung (KJA)',
+    detail: 'Rangka, jaring, tambatan, & pelampung',
+    biaya: 'Rp 16.000.000',
+    persen: 22.9,
+  },
+  {
+    no: 3,
+    item: 'Aquaponik Selada',
+    detail: 'Sistem rakit, media tanam, bibit',
+    biaya: 'Rp 4.500.000',
+    persen: 6.4,
+  },
+  {
+    no: 4,
+    item: 'Kandang Bebek Petelur',
+    detail: 'Konstruksi kandang, DOD, & pakan awal',
+    biaya: 'Rp 11.500.000',
+    persen: 16.4,
+  },
+  {
+    no: 5,
+    item: 'Operasional & Benih Ikan',
+    detail: 'Benih nila, pakan 3 bulan, & cadangan',
+    biaya: 'Rp 25.000.000',
+    persen: 35.7,
+  },
+];
+
+const budgetTabs = [
+  {
+    id: 'kja',
+    label: 'Program KJA',
+    title: 'Keramba Jaring Apung (KJA)',
+    description: 'Fokus pada pembesaran ikan (Nila/Mas) dengan struktur pelampung yang kokoh dan perlindungan predator yang maksimal.',
+    color: 'ocean',
+    items: [
+      { activity: 'Rangka KJA (HDPE/Baja Ringan)', cost: 'Rp 12.000.000', detail: 'Struktur utama ukuran 4x4m' },
+      { activity: 'Blok Styrofoam High Density', cost: 'Rp 4.500.000', detail: 'Pelampung utama berlapis fiber' },
+      { activity: 'Jaring (Net) Nilon Ganda', cost: 'Rp 2.500.000', detail: 'Tahan gesekan & serangan predator' },
+      { activity: 'Bibit Ikan (5-7 cm)', cost: 'Rp 1.500 / ekor', detail: 'Target 1.000 - 2.000 ekor' },
+      { activity: 'Pakan Ikan (Grow-out)', cost: 'Rp 12.000 / kg', detail: 'Kebutuhan masa pembesaran 4-6 bulan' },
+      { activity: 'Peralatan Aerasi & Pompa', cost: 'Rp 3.500.000', detail: 'Sistem suplay oksigen terintegrasi' },
+    ]
+  },
+  {
+    id: 'aquaponik',
+    label: 'Rumah Apung',
+    title: 'Program Rumah Apung (Floating Office & Control Room)',
+    description: 'Pusat komando ekosistem. Styrofoam berfungsi sebagai modul apung utama di bawah dek lantai untuk menahan beban bangunan secara stabil.',
+    color: 'emerald',
+    items: [
+      { activity: 'Modul Pelampung Styrofoam', cost: 'Rp 45.000.000', detail: 'Blok styrofoam besar berlapis semen/fiber' },
+      { activity: 'Struktur Rangka & Lantai WPC', cost: 'Rp 35.000.000', detail: 'Material kayu plastik tahan air & panas' },
+      { activity: 'Dinding & Atap Sandwich Panel', cost: 'Rp 30.000.000', detail: 'Panel XPS/EPS peredam panas' },
+      { activity: 'Sistem Listrik Panel Surya', cost: 'Rp 25.000.000', detail: 'Kapasitas 2000-3000 Watt' },
+      { activity: 'Sistem Monitoring Digital', cost: 'Rp 15.000.000', detail: 'Sensor pH, suhu, & CCTV terintegrasi' },
+      { activity: 'Interior & Furnitur Minimalis', cost: 'Rp 10.000.000', detail: 'Meja kerja & penyimpanan alat lab' },
+    ]
+  },
+  {
+    id: 'bebek',
+    label: 'Bebek Petelur',
+    title: 'Program Telur (Layer Hen System)',
+    description: 'Target harga jual Rp 2.000/butir. Target biaya produksi Rp 1.400 - Rp 1.600/butir, sangat dipengaruhi oleh efisiensi pakan (70% total biaya).',
+    color: 'sunset',
+    items: [
+      { activity: 'Pakan (Layer Feed)', cost: 'Rp 1.100 / butir', detail: 'Konsumsi ~110-120g per hari/ayam' },
+      { activity: 'Pullet (Amortisasi Ayam)', cost: 'Rp 200 / butir', detail: 'Biaya beli ayam per masa produktif' },
+      { activity: 'Vaksin & Vitamin', cost: 'Rp 50 / butir', detail: 'Pencegahan penyakit & booster' },
+      { activity: 'Listrik & Air Kandang', cost: 'Rp 50 / butir', detail: 'Simulasi cahaya untuk bertelur' },
+      { activity: 'Tenaga Kerja (Kandang)', cost: 'Rp 150 / butir', detail: 'Pemberian pakan & sanitasi' },
+      { activity: 'Penyusutan Kandang/Alat', cost: 'Rp 50 / butir', detail: 'Perawatan sistem baterai & minum' },
+    ]
+  }
+];
+
+const stats = [
+  { value: '10 Ha', label: 'Total Lahan Galian C' },
+  { value: '4 Ha', label: 'Area Pilot Project' },
+  { value: '3', label: 'Pilar Usaha Utama' },
+  { value: 'Rp 70 Jt', label: 'Total Investasi' },
+];
+---
+
+<Layout>
+  <!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <nav class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-xl bg-linear-to-br from-ocean to-emerald flex items-center justify-center text-white font-bold text-sm shadow-lg group-hover:scale-110 transition-transform">
+          TDA
+        </div>
+        <span class="font-heading font-700 text-ocean text-sm leading-tight hidden sm:block">
+          TriDharma<br /><span class="text-emerald">Agro</span>
+        </span>
+      </a>
+
+      <!-- Nav Links -->
+      <div class="hidden md:flex items-center gap-7">
+        {['Visi', 'Pilar', 'Kontrol', 'Investasi', 'Anggaran'].map((item) => (
+          <a
+            href={`#${item.toLowerCase()}`}
+            class="nav-link text-sm font-medium text-slate-600 hover:text-ocean"
+          >
+            {item}
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <a
+        href="https://wa.me/6281234567890?text=Halo%2C+saya+tertarik+berdiskusi+tentang+proyek+Ekosistem+Biru+Galian+C."
+        target="_blank"
+        rel="noopener"
+        class="btn-whatsapp text-white text-sm font-semibold px-5 py-2.5 rounded-full flex items-center gap-2 shadow-lg"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.523 5.837L0 24l6.336-1.482A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.366l-.359-.213-3.724.870.885-3.638-.232-.374A9.818 9.818 0 1112 21.818z"/>
+        </svg>
+        Hubungi Kami
+      </a>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+  <section
+    id="hero"
+    class="relative min-h-screen flex items-center justify-center overflow-hidden"
+  >
+    <!-- Background image with overlay -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="/images/hero.png"
+        alt="Aerial view of integrated aquaponics lake farm"
+        class="w-full h-full object-cover object-center"
+      />
+      <div class="absolute inset-0 bg-linear-to-b from-ocean/80 via-ocean-dark/70 to-emerald-dark/85"></div>
+      <!-- Animated particle overlay -->
+      <div class="absolute inset-0 bg-[url('/images/hero.png')] opacity-5 bg-repeat blur-2xl scale-110"></div>
+    </div>
+
+    <!-- Decorative circles -->
+    <div class="absolute top-1/4 right-10 w-80 h-80 rounded-full border border-white/10 animate-pulse opacity-30 hidden lg:block"></div>
+    <div class="absolute top-1/3 right-16 w-48 h-48 rounded-full border border-white/10 animate-pulse opacity-20 hidden lg:block [animation-delay:1s]"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-5xl mx-auto px-5 text-center py-32">
+      <!-- Eyebrow badge -->
+      <div class="animate-float inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-xs font-semibold tracking-widest uppercase rounded-full px-5 py-2 mb-8">
+        <span class="w-2 h-2 rounded-full bg-leaf animate-pulse"></span>
+        Proposal Investasi Strategis · 2025
+      </div>
+
+      <h1 class="animate-float-delay-1 font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">
+        Revitalisasi Galian C:<br />
+        <span class="bg-linear-to-r from-leaf to-sky bg-clip-text text-transparent">
+          Membangun Ekosistem<br />Biru Masa Depan
+        </span>
+      </h1>
+
+      <p class="animate-float-delay-2 text-lg md:text-xl text-white/75 max-w-2xl mx-auto leading-relaxed mb-10">
+        Transformasi lahan pasca-tambang <span class="text-white font-semibold">10 hektar</span> menjadi
+        pusat pangan terpadu yang produktif, berkelanjutan, dan bernilai ekonomi tinggi.
+      </p>
+
+      <div class="animate-float-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="#pilar"
+          id="cta-hero"
+          class="btn-primary text-white font-semibold px-8 py-4 rounded-full text-base shadow-xl inline-flex items-center gap-2"
+        >
+          Lihat Rencana Proyek
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </a>
+        <a
+          href="#investasi"
+          class="text-white/80 hover:text-white font-medium px-6 py-4 rounded-full border border-white/20 hover:border-white/40 transition-all text-base inline-flex items-center gap-2"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          Rincian Investasi
+        </a>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
+        <span class="text-white/60 text-xs tracking-widest uppercase">Gulir ke bawah</span>
+        <div class="w-5 h-9 border-2 border-white/30 rounded-full flex justify-center pt-1.5">
+          <div class="w-1 h-2 bg-white/60 rounded-full animate-bounce"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ STATS BAR ═══════════════════════════ -->
+  <section class="bg-ocean py-8">
+    <div class="max-w-5xl mx-auto px-5 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      {stats.map((s, i) => (
+        <div class="reveal" style={`transition-delay: ${i * 100}ms`}>
+          <div class="text-3xl md:text-4xl font-heading font-extrabold text-white">{s.value}</div>
+          <div class="text-white/60 text-sm mt-1">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ VISI ═══════════════════════════════ -->
+  <section id="visi" class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Text -->
+        <div class="reveal">
+          <div class="section-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+            Visi Proyek
+          </div>
+          <h2 class="font-heading text-4xl md:text-5xl font-bold text-ocean-dark mb-6 leading-tight">
+            Mengapa Lahan Timur<br />
+            <span class="text-emerald">Adalah Pilihan Terbaik?</span>
+          </h2>
+          <p class="text-slate-600 text-lg leading-relaxed mb-6">
+            Dari total 10 hektar lahan pasca-tambang Galian C, <strong class="text-ocean">zona timur seluas 4 hektar</strong> memiliki keunggulan komparatif yang tidak dimiliki zona lain: sumber air tanah bersih yang mengalir sepanjang tahun dengan debit stabil.
+          </p>
+          <p class="text-slate-600 text-lg leading-relaxed mb-8">
+            Ketersediaan air bersih ini menjadikan lahan timur sebagai lokasi ideal for <strong class="text-emerald">pilot project ekosistem pangan terpadu</strong> — menggabungkan perikanan, sayuran organik, and peternakan dalam satu siklus produksi yang saling menopang and meminimalkan limbah.
+          </p>
+
+          <div class="grid grid-cols-2 gap-4">
+            {[
+              { icon: '💧', label: 'Sumber Air Bersih', desc: 'Debit stabil sepanjang tahun' },
+              { icon: '🌿', label: 'Lahan 4 Hektar', desc: 'Area pilot project terpilih' },
+              { icon: '♻️', label: 'Zero-Waste Cycle', desc: 'Integrasi nutrisi antar pilar' },
+              { icon: '📈', label: 'Skalabel', desc: 'Model replikasi ke zona barat' },
+            ].map((item) => (
+              <div class="stat-card bg-slate-50 rounded-2xl p-5 pl-7">
+                <div class="text-2xl mb-2">{item.icon}</div>
+                <div class="font-heading font-semibold text-ocean-dark text-sm">{item.label}</div>
+                <div class="text-slate-500 text-xs mt-0.5">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Visual map/illustration -->
+        <div class="reveal relative">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-ocean/15">
+            <img
+              src="/images/hero.png"
+              alt="Aerial view of the integrated farm"
+              class="w-full h-[480px] object-cover object-top"
+            />
+            <div class="absolute inset-0 bg-linear-to-t from-ocean-dark/60 via-transparent to-transparent"></div>
+
+            <!-- Info overlay -->
+            <div class="absolute bottom-6 left-6 right-6">
+              <div class="glass-card rounded-2xl p-5 text-white">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-3 h-3 rounded-full bg-leaf animate-pulse"></div>
+                  <span class="font-semibold text-sm">Zona Timur — Area Aktif</span>
+                </div>
+                <div class="grid grid-cols-3 gap-3 text-center">
+                  {[['4 Ha', 'Area'], ['Bersih', 'Kualitas Air'], ['Stabil', 'Debit']].map(([val, lbl]) => (
+                    <div>
+                      <div class="font-heading font-bold text-sky text-lg">{val}</div>
+                      <div class="text-white/60 text-xs">{lbl}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating badge -->
+          <div class="absolute -top-5 -right-5 bg-ocean text-white rounded-2xl px-5 py-3 shadow-xl font-heading font-bold text-sm">
+            🏆 Pilot Project<br />
+            <span class="text-leaf">2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ 3 PILLARS ════════════════════════════ -->
+  <section id="pilar" class="py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="text-center mb-16 reveal">
+        <div class="section-badge inline-flex mx-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+          Layout Proyek
+        </div>
+        <h2 class="font-heading text-4xl md:text-5xl font-bold text-ocean-dark mt-2">
+          3 Pilar Utama Ekosistem Biru
+        </h2>
+        <p class="text-slate-500 text-lg mt-4 max-w-2xl mx-auto">
+          Tiga unit produksi yang saling terintegrasi, menciptakan siklus ekonomi yang efisien dan berkelanjutan dalam satu ekosistem.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {pillars.map((p, i) => (
+          <div
+            class="pillar-card reveal bg-white rounded-3xl overflow-hidden shadow-lg shadow-slate-200/80 flex flex-col"
+            style={`transition-delay: ${i * 150}ms`}
+          >
+            <!-- Card image -->
+            <div class="relative h-52 overflow-hidden">
+              <img
+                src={p.image}
+                alt={p.title}
+                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+              <div class={`absolute inset-0 bg-linear-to-t ${p.color} opacity-60`}></div>
+              <div class="absolute top-4 left-4">
+                <span class="bg-white/20 backdrop-blur-sm text-white text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full border border-white/30">
+                  {p.label}
+                </span>
+              </div>
+              <div class="absolute bottom-4 left-4">
+                <div class="text-3xl mb-1">{p.icon}</div>
+                <h3 class="font-heading font-bold text-white text-xl leading-tight">{p.title}</h3>
+                <p class="text-white/70 text-xs">{p.subtitle}</p>
+              </div>
+            </div>
+
+            <!-- Card body -->
+            <div class="p-6 flex flex-col flex-1">
+              <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                {p.description}
+              </p>
+
+              <!-- Specs grid -->
+              <div class="grid grid-cols-2 gap-3 mt-auto">
+                {p.specs.map((spec) => (
+                  <div class="bg-slate-50 rounded-xl p-3">
+                    <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider mb-0.5">{spec.label}</div>
+                    <div class="font-heading font-bold text-ocean-dark text-sm">{spec.value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Card footer accent -->
+            <div class={`h-1 bg-linear-to-r ${p.color}`}></div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Integration diagram note -->
+      <div class="reveal mt-12 bg-linear-to-r from-ocean/5 to-emerald/5 border border-ocean/10 rounded-2xl p-6 text-center">
+        <p class="text-slate-600 text-sm md:text-base">
+          <span class="font-semibold text-ocean">💡 Sinergi Terintegrasi:</span>
+          Kotoran bebek → Nutrisi Ikan → Limbah Ikan → Bio-filter Aquaponik → Selada Segar.
+          Satu sistem, tiga sumber pendapatan, nol pemborosan.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ RUMAH APUNG ══════════════════════════ -->
+  <section id="kontrol" class="py-24 bg-white overflow-hidden">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Image side -->
+        <div class="reveal order-2 lg:order-1 relative">
+          <div class="rounded-3xl overflow-hidden shadow-2xl shadow-ocean/20 relative">
+            <img
+              src="/images/floating-house.png"
+              alt="Rumah Apung pusat monitoring"
+              class="w-full h-[500px] object-cover"
+            />
+            <div class="absolute inset-0 bg-linear-to-t from-ocean-dark/50 to-transparent"></div>
+          </div>
+
+          <!-- Feature tags floating -->
+          {[
+            { pos: 'top-6 left-6', text: '🔭 Monitoring 360°' },
+            { pos: 'top-6 right-6', text: '⚡ Solar Panel' },
+            { pos: 'bottom-24 left-6', text: '🏠 Gudang Pakan' },
+          ].map((tag) => (
+            <div class={`absolute ${tag.pos} glass-card text-white text-xs font-semibold px-3 py-2 rounded-full`}>
+              {tag.text}
+            </div>
+          ))}
+        </div>
+
+        <!-- Text side -->
+        <div class="reveal order-1 lg:order-2">
+          <div class="section-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Pusat Kontrol
+          </div>
+          <h2 class="font-heading text-4xl md:text-5xl font-bold text-ocean-dark mb-6 leading-tight">
+            Rumah Apung:<br />
+            <span class="text-emerald">Jantung Operasional</span>
+          </h2>
+          <p class="text-slate-600 text-lg leading-relaxed mb-6">
+            Diposisikan strategis di <strong class="text-ocean">tengah-tengah keramba</strong>, Rumah Apung berfungsi sebagai pusat saraf seluruh ekosistem. Struktur dua lantai berbahan kayu ulin dan HDPE ini didesain tahan cuaca dengan panel surya mandiri.
+          </p>
+
+          <div class="space-y-4 mb-8">
+            {[
+              {
+                icon: '👁️',
+                title: 'Pemantauan Keamanan 24/7',
+                desc: 'CCTV dan sistem alarm terintegrasi memantau seluruh area KJA dari satu titik pusat.',
+              },
+              {
+                icon: '📦',
+                title: 'Gudang Pakan & Logistik',
+                desc: 'Penyimpanan pakan ikan, bibit selada, dan perlengkapan operasional dalam kondisi optimal.',
+              },
+              {
+                icon: '📊',
+                title: 'Manajemen Operasional',
+                desc: 'Ruang kerja untuk pencatatan produksi, jadwal panen, dan koordinasi tim harian.',
+              },
+              {
+                icon: '🛶',
+                title: 'Akses & Mobilitas',
+                desc: 'Dermaga kecil sebagai titik labuh perahu untuk akses cepat ke seluruh sudut KJA.',
+              },
+            ].map((feat) => (
+              <div class="flex gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-colors group">
+                <div class="text-2xl shrink-0 group-hover:scale-110 transition-transform">{feat.icon}</div>
+                <div>
+                  <div class="font-heading font-semibold text-ocean-dark mb-1">{feat.title}</div>
+                  <div class="text-slate-500 text-sm leading-relaxed">{feat.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ INVESTASI TABLE ══════════════════════ -->
+  <section id="investasi" class="py-24 bg-slate-50">
+    <div class="max-w-5xl mx-auto px-5">
+      <div class="text-center mb-16 reveal">
+        <div class="section-badge inline-flex mx-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Rincian Biaya
+        </div>
+        <h2 class="font-heading text-4xl md:text-5xl font-bold text-ocean-dark mt-2">
+          Rencana Investasi Awal
+        </h2>
+        <p class="text-slate-500 text-lg mt-4 max-w-xl mx-auto">
+          Alokasi modal yang transparan dan terukur untuk membangun ekosistem produksi yang solid dari hari pertama.
+        </p>
+      </div>
+
+      <div class="reveal bg-white rounded-3xl shadow-xl shadow-slate-200/80 overflow-hidden">
+        <!-- Table header -->
+        <div class="bg-linear-to-r from-ocean to-ocean-dark px-6 py-5">
+          <div class="grid grid-cols-12 gap-4 text-white/70 text-xs font-semibold uppercase tracking-wider">
+            <div class="col-span-1 hidden md:block">No.</div>
+            <div class="col-span-5 md:col-span-4">Komponen</div>
+            <div class="col-span-5 md:col-span-4 hidden md:block">Keterangan</div>
+            <div class="col-span-4 md:col-span-2 text-right">Biaya</div>
+            <div class="col-span-3 md:col-span-1 text-right hidden md:block">%</div>
+          </div>
+        </div>
+
+        <!-- Table rows -->
+        <div class="divide-y divide-slate-100">
+          {biayaItems.map((row, i) => (
+            <div class={`table-row-hover px-6 py-5 grid grid-cols-12 gap-4 items-center reveal`} style={`transition-delay: ${i * 80}ms`}>
+              <div class="col-span-1 hidden md:flex">
+                <span class="w-7 h-7 rounded-full bg-slate-100 text-slate-400 text-xs font-bold flex items-center justify-center">
+                  {row.no}
+                </span>
+              </div>
+              <div class="col-span-8 md:col-span-4">
+                <div class="font-heading font-semibold text-ocean-dark text-sm">{row.item}</div>
+                <div class="text-slate-400 text-xs mt-0.5 md:hidden">{row.detail}</div>
+              </div>
+              <div class="col-span-4 hidden md:block">
+                <div class="text-slate-500 text-sm">{row.detail}</div>
+              </div>
+              <div class="col-span-4 md:col-span-2 text-right">
+                <span class="font-heading font-bold text-ocean text-sm">{row.biaya}</span>
+              </div>
+              <div class="col-span-1 hidden md:block text-right">
+                <span class="text-slate-400 text-xs">{row.persen}%</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Total row -->
+        <div class="bg-linear-to-r from-ocean/5 to-emerald/5 border-t-2 border-ocean/20 px-6 py-6">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <div class="font-heading font-bold text-ocean-dark text-lg">Total Kebutuhan Modal</div>
+              <div class="text-slate-500 text-sm">Investasi awal pilot project (4 Ha · Zona Timur)</div>
+            </div>
+            <div class="text-right">
+              <div class="font-heading font-extrabold text-3xl text-ocean">Rp 70.000.000</div>
+              <div class="text-slate-400 text-xs">Tujuh Puluh Juta Rupiah</div>
+            </div>
+          </div>
+
+          <!-- Progress bars -->
+          <div class="mt-6 space-y-2.5">
+            {biayaItems.map((row) => (
+              <div class="flex items-center gap-3">
+                <div class="w-28 text-xs text-slate-500 text-right hidden sm:block truncate">{row.item.split(' ')[0]}</div>
+                <div class="flex-1 bg-slate-200 rounded-full h-2 overflow-hidden">
+                  <div
+                    class="h-full rounded-full bg-linear-to-r from-ocean to-emerald"
+                    style={`width: ${row.persen}%`}
+                  ></div>
+                </div>
+                <div class="text-xs text-slate-500 w-10">{row.persen}%</div>
+              </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- ROI note -->
+      <div class="reveal mt-8 grid sm:grid-cols-3 gap-5">
+        {[
+          { icon: '🐟', title: 'Potensi Panen Ikan', desc: '~500kg @Rp 22.000 per siklus 5 bulan' },
+          { icon: '🥬', title: 'Panen Selada', desc: '~600kg per bulan @Rp 25.000/kg' },
+          { icon: '🥚', title: 'Pendapatan Telur', desc: '~75 butir/hari @Rp 2.000 = Rp 150rb/hari' },
+        ].map((item, i) => (
+          <div class={`stat-card bg-white rounded-2xl p-5 pl-7 shadow-sm reveal`} style={`transition-delay: ${i * 100}ms`}>
+            <div class="text-2xl mb-2">{item.icon}</div>
+            <div class="font-heading font-semibold text-ocean-dark text-sm mb-1">{item.title}</div>
+            <div class="text-slate-500 text-xs leading-relaxed">{item.desc}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ CTA SECTION ══════════════════════════ -->
+  <section id="kontak" class="py-24 hero-gradient relative overflow-hidden">
+    <!-- Decorative blobs -->
+    <div class="absolute top-0 left-0 w-96 h-96 rounded-full bg-white/5 -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-white/5 translate-x-1/2 translate-y-1/2 blur-3xl"></div>
+
+    <div class="relative z-10 max-w-3xl mx-auto px-5 text-center">
+      <div class="reveal">
+        <div class="inline-flex items-center gap-2 bg-white/10 text-white/80 text-xs font-semibold tracking-widest uppercase rounded-full px-5 py-2 mb-8 border border-white/20">
+          <span class="w-1.5 h-1.5 rounded-full bg-leaf animate-pulse"></span>
+          Mulai Kerjasama
+        </div>
+        <h2 class="font-heading text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+          Siap Menjadi Bagian dari<br />
+          <span class="text-leaf">Ekosistem Biru ini?</span>
+        </h2>
+        <p class="text-white/70 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+          Kami terbuka untuk diskusi kerjasama investasi, kemitraan, atau dukungan teknis. Hubungi tim kami sekarang untuk mendapatkan proposal lengkap dan proyeksi keuangan detail.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            id="cta-whatsapp"
+            href="https://wa.me/6281234567890?text=Halo%2C+saya+tertarik+berdiskusi+tentang+proyek+Ekosistem+Biru+Galian+C.+Boleh+saya+minta+proposal+lengkapnya%3F"
+            target="_blank"
+            rel="noopener"
+            class="btn-whatsapp font-semibold px-8 py-4 rounded-full text-white text-base shadow-2xl inline-flex items-center gap-3"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.523 5.837L0 24l6.336-1.482A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.366l-.359-.213-3.724.870.885-3.638-.232-.374A9.818 9.818 0 1112 21.818z"/>
+            </svg>
+            Diskusikan Kerjasama
+          </a>
+          <a
+            href="mailto:info@tridharmaagro.id"
+            class="text-white/80 hover:text-white font-medium px-7 py-4 rounded-full border border-white/25 hover:border-white/50 transition-all text-base inline-flex items-center gap-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Kirim Email
+          </a>
+        </div>
+
+        <!-- Trust signals -->
+        <div class="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-3 text-white/50 text-sm">
+          <span class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Proposal Terdokumentasi
+          </span>
+          <span class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Data Produksi Real-time
+          </span>
+          <span class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Respons dalam 24 Jam
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ FOOTER ════════════════════════════════ -->
+  <footer class="bg-ocean-dark py-10 px-5">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <!-- Logo & tagline -->
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-linear-to-br from-ocean to-emerald flex items-center justify-center text-white font-bold text-sm">
+            TDA
+          </div>
+          <div>
+            <div class="font-heading font-bold text-white text-sm">TriDharma Agro</div>
+            <div class="text-white/40 text-xs">Ekosistem Biru Galian C — Pilot Project 2025</div>
+          </div>
+        </div>
+
+        <!-- Quick links -->
+        <div class="flex gap-6 text-white/50 text-sm">
+          {['Visi', 'Pilar', 'Kontrol', 'Investasi'].map((item) => (
+            <a href={`#${item.toLowerCase()}`} class="hover:text-white/80 transition-colors">{item}</a>
+          ))}
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-white/30 text-xs text-center md:text-right">
+          © 2025 TriDharma Agro.<br />
+          Semua hak dilindungi.
+        </div>
+      </div>
+
+      <div class="border-t border-white/10 mt-8 pt-6 text-center">
+        <p class="text-white/20 text-xs">
+          Dokumen ini bersifat rahasia dan hanya ditujukan kepada pihak yang berkepentingan.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════ TABBED BUDGET ════════════════════════ -->
+  <section id="anggaran" class="py-24 bg-slate-50">
+    <div class="max-w-5xl mx-auto px-5">
+      <div class="reveal text-center mb-12">
+        <div class="section-badge mx-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Transparansi Biaya
+        </div>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-ocean-dark mt-4">
+          Rincian Anggaran Per Kegiatan
+        </h2>
+        <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-sm md:text-base">
+          Klik pada setiap program di bawah ini untuk melihat breakdown kebutuhan alat, bahan, dan jasa instalasi secara detail.
+        </p>
+      </div>
+
+      <!-- Tabs Container -->
+      <div class="reveal bg-white rounded-3xl shadow-xl shadow-slate-200/60 overflow-hidden border border-slate-100">
+        <!-- Tab Sidebar/Header -->
+        <div class="flex flex-col md:flex-row border-b border-slate-100">
+          <div class="flex md:flex-col overflow-x-auto no-scrollbar border-b md:border-b-0 md:border-r border-slate-100 bg-slate-50/50 md:w-64 shrink-0">
+            {budgetTabs.map((tab, i) => (
+              <button
+                class={`budget-tab-btn flex items-center gap-3 px-6 py-5 text-left transition-all relative border-b md:border-b-0 md:border-r-4 border-transparent hover:bg-white whitespace-nowrap md:whitespace-normal
+                ${i === 0 ? 'active-tab bg-white border-ocean' : ''}`}
+                data-target={tab.id}
+              >
+                <span class="text-xl">{tab.id === 'kja' ? '🐟' : tab.id === 'aquaponik' ? '🏠' : '🥚'}</span>
+                <div>
+                  <div class="font-heading font-bold text-sm text-slate-800">{tab.label}</div>
+                  <div class="text-[10px] text-slate-400 font-medium uppercase tracking-wider hidden md:block">Detail Biaya</div>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          <!-- Tab Content Area -->
+          <div class="flex-1 p-6 md:p-10 min-h-[400px]">
+            {budgetTabs.map((tab, i) => (
+              <div 
+                id={`content-${tab.id}`} 
+                class={`budget-content transition-all duration-500 ${i === 0 ? 'block opacity-100' : 'hidden opacity-0 translate-y-4'}`}
+              >
+                <div class="mb-8">
+                  <h3 class={`font-heading font-extrabold text-2xl text-${tab.color}-dark mb-3`}>{tab.title}</h3>
+                  <p class="text-slate-500 text-sm leading-relaxed">{tab.description}</p>
+                </div>
+
+                <div class="space-y-4">
+                  {tab.items.map((item) => (
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-slate-50/70 border border-slate-100 hover:border-emerald/30 group transition-all">
+                      <div class="mb-2 sm:mb-0">
+                        <div class="font-bold text-slate-800 text-sm group-hover:text-ocean transition-colors">{item.activity}</div>
+                        <div class="text-[11px] text-slate-400 mt-0.5">{item.detail}</div>
+                      </div>
+                      <div class="text-right">
+                        <span class={`font-heading font-bold text-sm text-${tab.color}`}>
+                          {item.cost}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <!-- Summary Note -->
+                <div class="mt-10 p-5 rounded-2xl bg-linear-to-r from-slate-50 to-white border border-dashed border-slate-200 text-center sm:text-left">
+                  <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Estimasi Total Pilar</div>
+                  <div class={`text-2xl font-black text-${tab.color}-dark`}>
+                    {tab.id === 'kja' ? 'Rp 22.500.000++' : tab.id === 'aquaponik' ? 'Rp 160.000.000' : 'Rp 1.600 / butir'}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navbar & Tabs Scripts -->
+  <script>
+    // Tab switching logic
+    const tabBtns = document.querySelectorAll('.budget-tab-btn');
+    const contents = document.querySelectorAll('.budget-content');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-target');
+
+        // Remove active class from all buttons
+        tabBtns.forEach(b => {
+          b.classList.remove('active-tab', 'bg-white', 'border-ocean', 'border-emerald', 'border-sunset');
+        });
+
+        // Add active class to clicked button
+        btn.classList.add('active-tab', 'bg-white');
+        const colorClass = targetId === 'kja' ? 'border-ocean' : targetId === 'aquaponik' ? 'border-emerald' : 'border-sunset';
+        btn.classList.add(colorClass);
+
+        // Hide all contents
+        contents.forEach(content => {
+          content.classList.add('hidden', 'opacity-0', 'translate-y-4');
+          content.classList.remove('block', 'opacity-100', 'translate-y-0');
+        });
+
+        // Show target content
+        const targetContent = document.getElementById(`content-${targetId}`);
+        if (targetContent) {
+          targetContent.classList.remove('hidden');
+          // Small timeout to trigger animation
+          setTimeout(() => {
+            targetContent.classList.add('block', 'opacity-100', 'translate-y-0');
+            targetContent.classList.remove('translate-y-4');
+          }, 10);
+        }
+      });
+    });
+
+    // Navbar scroll behavior
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        navbar?.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'shadow-slate-200/50');
+      } else {
+        navbar?.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'shadow-slate-200/50');
+      }
+    });
+  </script>
+
+</Layout>
