@@ -153,32 +153,30 @@ const stats = [
 ---
 
 <Layout>
-  <!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
   <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-    <nav class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+    <nav class="max-w-7xl mx-auto px-5 py-4 flex items-center">
       <!-- Logo -->
-      <a href="#hero" class="flex items-center gap-2.5 group">
+      <div class="flex-1"><a href="#hero" class="flex items-center gap-2.5 group">
         <div class="w-9 h-9 rounded-xl bg-linear-to-br from-ocean to-emerald flex items-center justify-center text-white font-bold text-sm shadow-lg group-hover:scale-110 transition-transform">
           TDA
         </div>
         <span class="font-heading font-700 text-ocean text-sm leading-tight hidden sm:block">
           TriDharma<br /><span class="text-emerald">Agro</span>
         </span>
-      </a>
+      </a></div>
 
       <!-- Nav Links -->
-      <div class="hidden lg:flex items-center gap-7">
+      <div class="flex items-center gap-4 sm:gap-7 flex-none overflow-x-auto no-scrollbar py-1">
         {['Visi', 'Pilar', 'Kontrol', 'Investasi', 'Anggaran'].map((item) => (
           <a
             href={`#${item.toLowerCase()}`}
-            class="nav-link text-sm font-medium text-slate-600 hover:text-ocean"
+            class="nav-link text-xs sm:text-sm font-medium text-slate-600 hover:text-ocean whitespace-nowrap"
           >
             {item}
           </a>
         ))}
       </div>
-
-      </div>
+      <div class="flex-1"></div>
     </nav>
   </header>
 
