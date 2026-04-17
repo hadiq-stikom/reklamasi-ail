@@ -9,10 +9,10 @@ const pillars = [
     title: 'Perikanan KJA',
     subtitle: 'Keramba Jaring Apung',
     description:
-      'Instalasi KJA berukuran 50m × 10m dengan kapasitas produksi 10.000 ekor Ikan Nila unggul. Sistem sirkulasi air alami danau menjamin kualitas oksigen optimal tanpa pompa tambahan.',
+      'Instalasi KJA berukuran 5m × 10m dengan kapasitas produksi 2.000 ekor Ikan Nila unggul. Menggunakan sistem pelampung bambu yang ekonomis dan ramah lingkungan.',
     specs: [
-      { label: 'Luas KJA', value: '50m × 10m' },
-      { label: 'Kapasitas', value: '10.000 ekor' },
+      { label: 'Luas KJA', value: '5m × 10m' },
+      { label: 'Kapasitas', value: '2.000 ekor' },
       { label: 'Komoditas', value: 'Ikan Nila' },
       { label: 'Siklus Panen', value: '5–6 bulan' },
     ],
@@ -58,40 +58,85 @@ const pillars = [
   },
 ];
 
+const team = [
+  {
+    name: 'Aqib Masud',
+    role: 'Ketua Tim',
+    bio: 'Mengkoordinasi seluruh lini operasional dan komunikasi strategis dengan stakeholder.',
+    image: '/images/aqib.png'
+  },
+  {
+    name: 'Hadiq',
+    role: 'Divisi Manajemen & Teknologi',
+    bio: 'Optimasi sistem monitoring digital dan efisiensi manajemen basis data proyek.',
+    image: '/images/hadiq.png'
+  },
+  {
+    name: 'Moh. Azizi',
+    role: 'Divisi Bebek Petelur',
+    bio: 'Bertanggung jawab penuh atas produktivitas and kesehatan 100+ populasi bebek.',
+    image: '/images/azizi.png'
+  },
+  {
+    name: 'Sufyan',
+    role: 'Divisi Keramba Apung',
+    bio: 'Ahli teknis dalam instalasi KJA and pembesaran komoditas perikanan air tawar.',
+    image: '/images/sufyan.png'
+  },
+  {
+    name: 'Zaim',
+    role: 'Divisi Selada',
+    bio: 'Spesialis sistem Aquaponik (DWC) untuk memastikan kualitas sayuran organik premium.',
+    image: '/images/zaim.png'
+  },
+  {
+    name: 'Anton Al Muqsith',
+    role: 'Divisi Pemasaran',
+    bio: 'Menjamin serapan hasil panen ke pasar komersial and menjaga siklus kas operasional.',
+    image: '/images/anton.png'
+  },
+];
+
+const sustainabilityItems = [
+  { icon: '🌱', title: 'Optimalisasi Aset', desc: 'Transformasi area bekas galian menjadi kawasan produktif yang terawat dan hijau.' },
+  { icon: '🔄', title: 'Mandiri Finansial', desc: 'Siklus operasional yang sehat untuk mendukung perawatan lahan secara mandiri.' },
+  { icon: '🌳', title: 'Pemulihan Ekosistem', desc: 'Mengembalikan kesuburan air dan tanah melalui metode integrasi alam.' },
+];
+
 const biayaItems = [
   {
     no: 1,
-    item: 'Rumah Apung (Pusat Kontrol)',
-    detail: 'Konstruksi, material, & perlengkapan',
-    biaya: 'Rp 13.000.000',
-    persen: 18.6,
+    item: 'Rumah Apung (Sederhana)',
+    detail: 'Fondasi tong plastik, bambu, & atap sirap',
+    biaya: 'Rp 7.500.000',
+    persen: 15.5,
   },
   {
     no: 2,
-    item: 'Keramba Jaring Apung (KJA)',
-    detail: 'Rangka, jaring, tambatan, & pelampung',
-    biaya: 'Rp 16.000.000',
-    persen: 22.9,
+    item: 'Keramba Jaring Apung (5m x 10m)',
+    detail: 'Rangka bambu, jaring, & pelampung',
+    biaya: 'Rp 8.000.000',
+    persen: 16.5,
   },
   {
     no: 3,
-    item: 'Aquaponik Selada',
+    item: 'Aquaponik Selada (1.000 Lubang)',
     detail: 'Sistem rakit, media tanam, bibit',
-    biaya: 'Rp 5.000.000',
-    persen: 7.1,
+    biaya: 'Rp 7.000.000',
+    persen: 14.4,
   },
   {
     no: 4,
     item: 'Kandang Bebek Petelur',
-    detail: 'Konstruksi kandang, DOD, & pakan awal',
-    biaya: 'Rp 11.500.000',
-    persen: 16.4,
+    detail: 'Konstruksi bambu, DOD, & pakan awal',
+    biaya: 'Rp 9.000.000',
+    persen: 18.6,
   },
   {
     no: 5,
     item: 'Operasional & Benih Ikan',
-    detail: 'Benih nila, pakan 3 bulan, & cadangan',
-    biaya: 'Rp 24.500.000',
+    detail: 'Benih nila, pakan, & cadangan awal',
+    biaya: 'Rp 17.000.000',
     persen: 35.0,
   },
 ];
@@ -104,10 +149,10 @@ const budgetTabs = [
     description: 'Fokus pada pembesaran ikan (Nila/Mas) dengan struktur pelampung yang kokoh dan perlindungan predator yang maksimal.',
     color: 'ocean',
     items: [
-      { activity: 'Rangka KJA (HDPE/Baja Ringan)', cost: 'Rp 12.000.000', detail: 'Struktur utama ukuran 4x4m' },
-      { activity: 'Blok Styrofoam High Density', cost: 'Rp 4.500.000', detail: 'Pelampung utama berlapis fiber' },
-      { activity: 'Jaring (Net) Nilon Ganda', cost: 'Rp 2.500.000', detail: 'Tahan gesekan & serangan predator' },
-      { activity: 'Bibit Ikan (5-7 cm)', cost: 'Rp 1.500 / ekor', detail: 'Target 1.000 - 2.000 ekor' },
+      { activity: 'Rangka Bambu Petung', cost: 'Rp 3.500.000', detail: 'Material lokal yang tahan air (treatment khusus)' },
+      { activity: 'Pelampung (Drum Plastik)', cost: 'Rp 2.500.000', detail: 'Drum bekas 200L rasion 1:1' },
+      { activity: 'Jaring (Net) Nilon Ganda', cost: 'Rp 1.000.000', detail: 'Tahan gesekan untuk 1 unit 5x10m' },
+      { activity: 'Bibit Nila (5-7 cm)', cost: 'Rp 1.000.000', detail: 'Target 2.000 ekor' },
       { activity: 'Pakan Ikan (Grow-out)', cost: 'Rp 12.000 / kg', detail: 'Kebutuhan masa pembesaran 4-6 bulan' },
       { activity: 'Peralatan Aerasi & Pompa', cost: 'Rp 3.500.000', detail: 'Sistem suplay oksigen terintegrasi' },
     ]
@@ -119,12 +164,10 @@ const budgetTabs = [
     description: 'Sistem rakit apung (DWC) terintegrasi dengan kolam ikan. Target Harga Jual: Rp 25.000 / kg.',
     color: 'emerald',
     items: [
-      { activity: 'Benih Selada (Pelleted)', cost: 'Rp 500 / titik', detail: 'Benih unggul kualitas ekspor' },
-      { activity: 'Media Tanam (Rockwool)', cost: 'Rp 1.000 / titik', detail: 'Media semai standar hidroponik' },
-      { activity: 'Rakit Styrofoam High Density', cost: 'Rp 3.500.000', detail: 'Modul apung per unit (food-grade coating)' },
-      { activity: 'Nutrisi & Listrik Sirkulasi', cost: 'Rp 6.500 / kg', detail: 'Konversi kotoran ikan & operasional pompa' },
-      { activity: 'Tenaga Kerja Perawatan', cost: 'Rp 3.000 / kg', detail: 'Pembersihan rakit dan kontrol kualitas daun' },
-      { activity: 'Kemasan & Label Premium', cost: 'Rp 1.500 / kg', detail: 'Packaging profesional (lab-clean look)' },
+      { activity: 'Benih Selada (Pelleted)', cost: 'Rp 1.500.000', detail: 'Benih unggul untuk 1.000 titik tanam' },
+      { activity: 'Media Tanam (Rockwool/Netpot)', cost: 'Rp 1.000.000', detail: 'Media semai & wadah standar' },
+      { activity: 'Modul Rakit Styrofoam HD', cost: 'Rp 3.500.000', detail: 'Modul apung kapasitas 1.000 lubang' },
+      { activity: 'Nutrisi & Pompa Sirkulasi', cost: 'Rp 1.000.000', detail: 'Booster nutrisi organik & daya aerasi' },
     ]
   },
   {
@@ -134,21 +177,32 @@ const budgetTabs = [
     description: 'Target harga jual Rp 2.000/butir. Target biaya produksi Rp 1.400 - Rp 1.600/butir, sangat dipengaruhi oleh efisiensi pakan (70% total biaya).',
     color: 'sunset',
     items: [
-      { activity: 'Pakan (Layer Feed)', cost: 'Rp 1.100 / butir', detail: 'Konsumsi ~110-120g per hari/ayam' },
-      { activity: 'Pullet (Amortisasi Ayam)', cost: 'Rp 200 / butir', detail: 'Biaya beli ayam per masa produktif' },
-      { activity: 'Vaksin & Vitamin', cost: 'Rp 50 / butir', detail: 'Pencegahan penyakit & booster' },
-      { activity: 'Listrik & Air Kandang', cost: 'Rp 50 / butir', detail: 'Simulasi cahaya untuk bertelur' },
-      { activity: 'Tenaga Kerja (Kandang)', cost: 'Rp 150 / butir', detail: 'Pemberian pakan & sanitasi' },
-      { activity: 'Penyusutan Kandang/Alat', cost: 'Rp 50 / butir', detail: 'Perawatan sistem baterai & minum' },
+      { activity: 'Bibit Bebek (DOD Unggul)', cost: 'Rp 3.500.000', detail: '100 ekor bebek petelur produktif' },
+      { activity: 'Konstruksi Kandang Bambu', cost: 'Rp 2.500.000', detail: 'Kandang lay-out di area KJA' },
+      { activity: 'Pakan Awal & Vitamin', cost: 'Rp 2.000.000', detail: 'Nutrisi masa adaptasi 1-2 bulan' },
+      { activity: 'Peralatan Makan & Minum', cost: 'Rp 1.000.000', detail: 'Sistem otomatis sederhana' },
+    ]
+  },
+  {
+    id: 'rumahapung',
+    label: 'Rumah Apung',
+    title: 'Pusat Kontrol & Rumah Apung',
+    description: 'Penyediaan fasilitas monitoring 24/7 dan gudang logistik pakan di lokasi strategis tengah kolam.',
+    color: 'ocean',
+    items: [
+      { activity: 'Konstruksi Rangka Bambu', cost: 'Rp 2.500.000', detail: 'Penopang utama 1 lantai' },
+      { activity: 'Tong Plastik (Pelampung)', cost: 'Rp 2.500.000', detail: 'Kapasitas apung aman 2 orang' },
+      { activity: 'Atap Sirap & Dinding', cost: 'Rp 1.500.000', detail: 'Material ringan dan estetik' },
+      { activity: 'Instalasi Solar Small', cost: 'Rp 1.000.000', detail: 'Kebutuhan penerangan bertenaga surya' },
     ]
   }
 ];
 
 const stats = [
   { value: '10 Ha', label: 'Total Lahan Galian C' },
-  { value: '4 Ha', label: 'Area Pilot Project' },
+  { value: '4 Ha', label: 'Area Percontohan' },
   { value: '3', label: 'Pilar Usaha Utama' },
-  { value: 'Rp 70 Jt', label: 'Total Investasi' },
+  { value: 'Rp 48.5 Jt', label: 'Total Investasi' },
 ];
 ---
 
@@ -206,19 +260,18 @@ const stats = [
       <!-- Eyebrow badge -->
       <div class="animate-float inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-xs font-semibold tracking-widest uppercase rounded-full px-5 py-2 mb-8">
         <span class="w-2 h-2 rounded-full bg-leaf animate-pulse"></span>
-        Proposal Investasi Strategis · 2025
+        Proposal Reklamasi Galian C Tahap 1 · 2026
       </div>
 
       <h1 class="animate-float-delay-1 font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">
-        Revitalisasi Galian C:<br />
+        Restorasi Aktif Lahan:<br />
         <span class="bg-linear-to-r from-leaf to-sky bg-clip-text text-transparent">
-          Membangun Ekosistem<br />Biru Masa Depan
+          Solusi Produktif Pasca Tambang
         </span>
       </h1>
 
       <p class="animate-float-delay-2 text-lg md:text-xl text-white/75 max-w-2xl mx-auto leading-relaxed mb-10">
-        Transformasi lahan pasca-tambang <span class="text-white font-semibold">10 hektar</span> menjadi
-        pusat pangan terpadu yang produktif, berkelanjutan, dan bernilai ekonomi tinggi.
+        Memastikan lahan <span class="text-white font-semibold">Bekas Galian C</span> tetap produktif, hijau, dan terawat .
       </p>
 
       <div class="animate-float-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -276,14 +329,14 @@ const stats = [
             Visi Proyek
           </div>
           <h2 class="font-heading text-4xl md:text-5xl font-bold text-ocean-dark mb-6 leading-tight">
-            Mengapa Lahan Timur<br />
-            <span class="text-emerald">Adalah Pilihan Terbaik?</span>
+            Menghidupkan Lahan,<br />
+            <span class="text-emerald">Meningkatkan Nilai Kawasan</span>
           </h2>
           <p class="text-slate-600 text-lg leading-relaxed mb-6">
-            Dari total 10 hektar lahan pasca-tambang Galian C, <strong class="text-ocean">zona timur seluas 4 hektar</strong> memiliki keunggulan komparatif yang tidak dimiliki zona lain: sumber air tanah bersih yang mengalir sepanjang tahun dengan debit stabil.
+            Lahan pasca-tambang Galian C seluas 10 hektar memiliki potensi besar yang melampaui sekadar area kosong. Dengan manajemen yang tepat, zona timur seluas 4 hektar kini dikelola aktif sebagai area percontohan.
           </p>
           <p class="text-slate-600 text-lg leading-relaxed mb-8">
-            Ketersediaan air bersih ini menjadikan lahan timur sebagai lokasi ideal for <strong class="text-emerald">pilot project ekosistem pangan terpadu</strong> — menggabungkan perikanan, sayuran organik, and peternakan dalam satu siklus produksi yang saling menopang and meminimalkan limbah.
+            Melalui integrasi perikanan, pertanian, dan peternakan, kami memastikan adanya **keberlanjutan ekosistem dan aktivitas produksi** yang kontinyu. Ini adalah langkah nyata untuk menjaga kesuburan lahan agar tetap hijau, produktif, dan bermanfaat bagi lingkungan sekitar.
           </p>
 
           <div class="grid grid-cols-2 gap-4">
@@ -334,7 +387,7 @@ const stats = [
           <!-- Floating badge -->
           <div class="absolute -top-5 -right-5 bg-ocean text-white rounded-2xl px-5 py-3 shadow-xl font-heading font-bold text-sm">
             🏆 Pilot Project<br />
-            <span class="text-leaf">2025</span>
+            <span class="text-leaf">2026</span>
           </div>
         </div>
       </div>
@@ -452,18 +505,18 @@ const stats = [
           </div>
           <h2 class="font-heading text-4xl md:text-5xl font-bold text-ocean-dark mb-6 leading-tight">
             Rumah Apung:<br />
-            <span class="text-emerald">Jantung Operasional</span>
+            <span class="text-emerald">Pusat Jaga Lahan</span>
           </h2>
           <p class="text-slate-600 text-lg leading-relaxed mb-6">
-            Diposisikan strategis di <strong class="text-ocean">tengah-tengah keramba</strong>, Rumah Apung berfungsi sebagai pusat saraf seluruh ekosistem. Struktur dua lantai berbahan kayu ulin dan HDPE ini didesain tahan cuaca dengan panel surya mandiri.
+            Pusat pantau 1 lantai yang dibangun dengan material bambu petung dan pelampung tong plastik. Desain atap sirap memberikan sirkulasi udara alami yang sejuk and ramah lingkungan.
           </p>
 
           <div class="space-y-4 mb-8">
             {[
               {
                 icon: '👁️',
-                title: 'Pemantauan Keamanan 24/7',
-                desc: 'CCTV dan sistem alarm terintegrasi memantau seluruh area KJA dari satu titik pusat.',
+                title: 'Pengawasan Langsung 24/7',
+                desc: 'Kehadiran tim secara fisik di lokasi memastikan pengawasan aset yang lebih responsif and aman.',
               },
               {
                 icon: '📦',
@@ -557,8 +610,8 @@ const stats = [
               <div class="text-slate-500 text-sm">Investasi awal pilot project (4 Ha · Zona Timur)</div>
             </div>
             <div class="text-right">
-              <div class="font-heading font-extrabold text-3xl text-ocean">Rp 70.000.000</div>
-              <div class="text-slate-400 text-xs">Tujuh Puluh Juta Rupiah</div>
+              <div class="font-heading font-extrabold text-3xl text-ocean">Rp 48.500.000</div>
+              <div class="text-slate-400 text-xs">Empat Puluh Delapan Juta Lima Ratus Ribu Rupiah</div>
             </div>
           </div>
 
@@ -630,7 +683,7 @@ const stats = [
                 ${i === 0 ? 'active-tab bg-white border-ocean' : ''}`}
                 data-target={tab.id}
               >
-                <span class="text-xl">{tab.id === 'kja' ? '🐟' : tab.id === 'aquaponik' ? '🏠' : '🥚'}</span>
+                <span class="text-xl">{tab.id === 'kja' ? '🐟' : tab.id === 'aquaponik' ? '🥬' : tab.id === 'bebek' ? '🥚' : '🏠'}</span>
                 <div>
                   <div class="font-heading font-bold text-sm text-slate-800">{tab.label}</div>
                   <div class="text-[10px] text-slate-400 font-medium uppercase tracking-wider hidden md:block">Detail Biaya</div>
@@ -671,7 +724,10 @@ const stats = [
                 <div class="mt-10 p-5 rounded-2xl bg-linear-to-r from-slate-50 to-white border border-dashed border-slate-200 text-center sm:text-left">
                   <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Estimasi Total Pilar</div>
                   <div class={`text-2xl font-black text-${tab.color}-dark`}>
-                    {tab.id === 'kja' ? 'Rp 22.500.000++' : tab.id === 'aquaponik' ? 'Rp 160.000.000' : 'Rp 1.600 / butir'}
+                    {tab.id === 'kja' ? 'Rp 8.000.000' : 
+                     tab.id === 'aquaponik' ? 'Rp 7.000.000' : 
+                     tab.id === 'bebek' ? 'Rp 9.000.000' : 
+                     'Rp 7.500.000'}
                   </div>
                 </div>
               </div>
@@ -682,6 +738,120 @@ const stats = [
     </div>
   </section>
 
+
+  <!-- ═══════════════════════════════ TEAM SECTION ═══════════════════════════ -->
+  <section id="tim" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="text-center mb-16 reveal">
+        <div class="section-badge inline-flex mx-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 1 1 0 7.75"/></svg>
+          Manajemen Lapangan
+        </div>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-ocean-dark mt-2">
+          Tim Pengelola Lahan
+        </h2>
+        <p class="text-slate-500 text-lg mt-4 max-w-2xl mx-auto">
+          Enam personil berdedikasi yang memastikan kehadiran operasional 24/7 di lokasi untuk menjaga aset dan produktivitas lahan.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {team.map((m, i) => (
+          <div 
+            class="group reveal bg-slate-50 rounded-3xl p-6 hover:bg-white hover:shadow-2xl hover:shadow-ocean/10 transition-all duration-500 border border-transparent hover:border-ocean/10"
+            style={`transition-delay: ${i * 100}ms`}
+          >
+            <div class="flex items-center gap-5 mb-5">
+              <div class="relative">
+                <div class="w-20 h-20 rounded-2xl overflow-hidden shadow-lg shadow-ocean/10">
+                  <img src={m.image} alt={m.name} class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                </div>
+                <div class="absolute -bottom-2 -right-2 w-8 h-8 rounded-lg bg-ocean text-white flex items-center justify-center text-xs font-bold">
+                  {i+1}
+                </div>
+              </div>
+              <div>
+                <h3 class="font-heading font-bold text-ocean-dark text-lg group-hover:text-ocean transition-colors">{m.name}</h3>
+                <p class="text-emerald font-semibold text-xs uppercase tracking-wider">{m.role}</p>
+              </div>
+            </div>
+            <p class="text-slate-500 text-sm leading-relaxed italic">
+              "{m.bio}"
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ SUSTAINABILITY ════════════════════════ -->
+  <section id="keberlanjutan" class="py-24 bg-ocean-dark text-white overflow-hidden relative">
+    <!-- Background element -->
+    <div class="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-white/5 to-transparent pointer-events-none"></div>
+    
+    <div class="max-w-6xl mx-auto px-5 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-[10px] font-bold tracking-widest uppercase rounded-full px-4 py-1.5 mb-6">
+            Kemandirian Proyek
+          </div>
+          <h2 class="font-heading text-3xl md:text-5xl font-bold mb-6 leading-tight">
+            Keberlanjutan Tanpa<br />
+            <span class="text-sky">Subsidi Berkelanjutan</span>
+          </h2>
+          <p class="text-white/70 text-lg mb-8 leading-relaxed">
+            Satu poin krusial: Dana investasi awal digunakan untuk membangun sistem yang **mampu membiayai dirinya sendiri**. Seluruh pendapatan operasional dialokasikan untuk menjaga lahan tetap aktif selamanya.
+          </p>
+
+          <div class="space-y-6">
+            {sustainabilityItems.map((item) => (
+              <div class="flex gap-4 items-start">
+                <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-2xl shrink-0">
+                  {item.icon}
+                </div>
+                <div>
+                  <h4 class="font-heading font-bold text-lg mb-1">{item.title}</h4>
+                  <p class="text-white/50 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="reveal relative">
+          <!-- Circular Flow Visual -->
+          <div class="relative w-full aspect-square max-w-[400px] mx-auto">
+            <div class="absolute inset-0 rounded-full border-2 border-dashed border-white/20 animate-spin-slow"></div>
+            <div class="absolute inset-4 rounded-full border border-white/10"></div>
+            
+            <!-- Nodes -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 glass-card p-4 rounded-2xl text-center">
+              <div class="text-2xl mb-1">🏦</div>
+              <div class="font-bold text-[10px] uppercase text-white/80">Investasi Awal</div>
+            </div>
+            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 glass-card p-4 rounded-2xl text-center">
+              <div class="text-2xl mb-1">🥬</div>
+              <div class="font-bold text-[10px] uppercase text-white/80">Pendapatan Panen</div>
+            </div>
+            <div class="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 glass-card p-4 rounded-2xl text-center">
+              <div class="text-2xl mb-1">👷</div>
+              <div class="font-bold text-[10px] uppercase text-white/80">Gaji & Ops</div>
+            </div>
+            <div class="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 glass-card p-4 rounded-2xl text-center">
+              <div class="text-2xl mb-1">🛡️</div>
+              <div class="font-bold text-[10px] uppercase text-white/80">Lahan Aman</div>
+            </div>
+
+            <!-- Center Content -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
+              <div class="text-4xl font-black text-sky mb-2">100%</div>
+              <div class="text-[10px] font-bold text-white/40 uppercase tracking-widest leading-tight">Operational<br />Independence</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ═══════════════════════════════ FOOTER ════════════════════════════════ -->
   <footer class="bg-ocean-dark py-10 px-5">
@@ -694,7 +864,7 @@ const stats = [
           </div>
           <div>
             <div class="font-heading font-bold text-white text-sm">TriDharma Agro</div>
-            <div class="text-white/40 text-xs">Ekosistem Biru Galian C — Pilot Project 2025</div>
+            <div class="text-white/40 text-xs">Ekosistem Biru Galian C — Pilot Project 2026</div>
           </div>
         </div>
 
@@ -707,7 +877,7 @@ const stats = [
 
         <!-- Copyright -->
         <div class="text-white/30 text-xs text-center md:text-right">
-          © 2025 TriDharma Agro.<br />
+          © 2026 TriDharma Agro.<br />
           Semua hak dilindungi.
         </div>
       </div>
